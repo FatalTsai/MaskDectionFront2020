@@ -12,6 +12,10 @@ import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { MonitorComponent } from './monitor/monitor.component';
+import { PopupModule } from '@progress/kendo-angular-popup';
+import {MatSliderModule} from '@angular/material/slider';
+
 
 @NgModule({
   imports: [
@@ -22,11 +26,14 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     RouterModule,
     AppRoutingModule,
     NgbModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    PopupModule,
+    MatSliderModule
   ],
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    MonitorComponent
 
   ],
   providers: [],
