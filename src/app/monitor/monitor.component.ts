@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import {DomSanitizer} from '@angular/platform-browser';
+import panzoom from "panzoom";
+
 
 @Component({
   selector: 'app-monitor',
@@ -102,4 +104,81 @@ this.filter ="brightness("+this.brightnessbarvalue+")" +
 
   }
 
+  zoombarvalue :number = 0;
+
+  zoomout(value){
+    if(value){
+      if(this.zoombarvalue >0.3)
+        this.zoombarvalue -= 0.2;
+      console.log("zoomout")
+    }
+    else
+    {
+      if(this.zoombarvalue <10)
+      this.zoombarvalue += 0.2;
+      console.log("zoomin")
+    }
+    // this.playstat['zoom'] = this.zoombarvalue
+    // this.PlaystatModified()
+    this.zoom(this.zoombarvalue)
+  }
+  zoomupdate()
+  {
+    console.log("zoom change!")
+    // this.playstat['zoom'] = this.zoombarvalue
+    // this.PlaystatModified()
+
+    this.zoom(this.zoombarvalue)
+  }
+
+
+
+
+  zoom(scale) {
+    const isSmooth = false;
+    //const scale = this.currentZoomLevel;
+
+
+    if (scale) {
+      const transform = this.panZoomController.getTransform();
+      const deltaX = transform.x;
+      const deltaY = transform.y;
+      const offsetX = scale + deltaX;
+      const offsetY = scale + deltaY;
+
+      if (isSmooth) {
+        this.panZoomController.smoothZoom(0, 0, scale);
+      } else {
+        console.log("in zoomAbs scale = "+scale)
+        this.panZoomController.zoomAbs(offsetX, offsetY, scale);
+      }
+    }
+
+  }
+
+
+
+panZoomController;
+
+  ngAfterViewInit() {
+
+    this.panZoomController = panzoom(this.elem , {
+      maxZoom: 3,
+      minZoom: 0.7,
+      bounds: {
+        top: 150,
+        right: 50,
+        bottom: 50,
+        left: 150,
+      },
+      zoomDoubleClickSpeed: 1, //value of 1 will disable double click zoom completely.
+      //bounds:false,
+      boundsPadding: 0.1,
+      beforeWheel: function(e) {
+        // allow wheel-zoom only if altKey is down. Otherwise - ignore
+        var shouldIgnore = !e.altKey;
+        return shouldIgnore;
+      },
+    })
+  }
 }

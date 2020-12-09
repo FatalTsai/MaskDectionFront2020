@@ -20,7 +20,7 @@
                   <!-- <p class="category">Click to view notifications</p> -->
                 </h4>
                 <div class="col-md-12 ">
-                  <div class="playContainer " >
+                  <div class="playContainer " style="overflow: hidden;">
 
                   <!-- <img id="webcam" src="http://localhost:8787/" height="810" width="1080"> -->
                   <img id="webcam" src="./assets/130714941_2752026378345587_2061215954478779509_n.png" height="810" width="1080">
@@ -42,11 +42,11 @@
                     <!-- <button class="btn btn-primary btn-block" (click)="showNotification('top','center')">Top Center</button> -->
                     <div class="zoom-control ml-auto mr-auto text-center mt-3 ">
        
-                        <img src="./assets/icon/zoom-out.svg" alt="" width="32" height="32" title="Bootstrap">
+                        <img src="./assets/icon/zoom-out.svg" alt="" width="32" height="32" title="Bootstrap" (click)="zoomout(true)">
                   
                       <mat-slider #zoombar step="0.2" min="0.7" max="3" (change)="zoomupdate()" [(ngModel)]="zoombarvalue"></mat-slider>
                   
-                        <img src="./assets/icon/zoom-in.svg" alt="" width="32" height="32" title="Bootstrap">
+                        <img src="./assets/icon/zoom-in.svg" alt="" width="32" height="32" title="Bootstrap" (click)="zoomout(false)">
                   </div>
                   </div>
 
