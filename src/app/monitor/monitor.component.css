@@ -29,11 +29,13 @@ img{
 
 
 kendo-popup{
-position: absolute ;
-top:  -140px !important;
-left: 15px !important;
-background-color: #00bfff !important;
-color: blanchedalmond;
+    width: 160px !important;
+    position: absolute ;
+    top:  10px !important;
+    left: -195px !important;
+    background-color: #00bfff !important;
+    color: blanchedalmond;
+    box-shadow: 12px 12px 7px rgba(0, 0, 0, 0.7);
 
 }
 .zoom-control mat-slider{

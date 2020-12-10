@@ -97,10 +97,11 @@ this.filter ="brightness("+this.brightnessbarvalue+")" +
       break;
     }
 }
-
+playContainer
   ngOnInit(): void {
 
      this.elem = document.getElementById("webcam");
+     this.playContainer=document.getElementById("playContainer");
 
   }
 
@@ -155,8 +156,62 @@ this.filter ="brightness("+this.brightnessbarvalue+")" +
     }
 
   }
+// $ ffmpeg -f MJPEG -y -i http://localhost:8080/?action=stream -r 1 -vframes 1 -q:v 1 snapshot.jpg
 
+snapshot(){
 
+  /*
+  html2canvas(this.player.nativeElement).then(canvas => {
+    //this.canvas.nativeElement.src = canvas.toDataURL();
+    this.downloadLink.nativeElement.href = canvas.toDataURL('image/png');
+    this.downloadLink.nativeElement.download = 'marble-diagram.png';
+    this.downloadLink.nativeElement.click();
+    console.log(this.downloadLink.nativeElement)
+    
+  });*/
+  
+  const canvasElement = <HTMLCanvasElement> document.createElement('CANVAS');
+  // const video = this.elem;
+  const video = this.playContainer
+  const context = canvasElement.getContext('2d');
+  let w: number, h: number, ratio: number;
+  // console.log('video.width',video.width)
+  ratio = video.width / video.height;
+  w = video.width ;
+  h = w / ratio;
+  canvasElement.width = w;
+  canvasElement.height = h;
+  context.fillRect(0, 0, w, h);
+  context.drawImage(video, 0, 0, w, h);
+  console.log(video)
+  
+  /*
+  try{
+  console.log(''+canvasElement.toDataURL())
+  }
+  catch(e)
+  {
+    console.log(e)
+  }*/
+  try{
+  const link = document.createElement('a');
+  //this.snapshotName = this.snapshotName !== '' ?  this.snapshotName : 'snapshot';
+  //this.userImageType = this.imageTypes.indexOf(this.userImageType.toUpperCase()) >= 0 ? this.userImageType.toUpperCase() : 'PNG';
+  //link.setAttribute('download', this.snapshotName + '.' + this.userImageType);
+  link.setAttribute('download', 'fuck.png');
+
+  const dataURL = canvasElement.toDataURL();
+  link.href = dataURL;
+  console.log('from : '+JSON.stringify(link))
+  document.body.appendChild(link);
+  link.click();
+  }catch(e){
+    console.log(e)
+  }
+  /*
+  
+  */
+}
 
 panZoomController;
 
