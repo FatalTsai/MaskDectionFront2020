@@ -45,7 +45,8 @@ this.filter ="brightness("+this.brightnessbarvalue+")" +
 }
   showNotification(from, align){
 
-    const color = Math.floor((Math.random() * 5) + 1);
+    var color = Math.floor((Math.random() * 5) + 1);
+    color = 4 
 
     switch(color){
       case 1:
@@ -76,7 +77,7 @@ this.filter ="brightness("+this.brightnessbarvalue+")" +
        });
       break;
       case 4:
-      this.toastr.error('<span class="now-ui-icons ui-1_bell-53" style="z-index:2147483647"></span> Welcome to <b>Now Ui Dashboard</b> - a beautiful freebie for every web developer.', '', {
+      this.toastr.error('<span class="now-ui-icons ui-1_bell-53" style="z-index:2147483647"></span> fuck off <b>bitches</b> - Please go fucking away.', '', {
          timeOut: 8000,
          enableHtml: true,
          closeButton: true,

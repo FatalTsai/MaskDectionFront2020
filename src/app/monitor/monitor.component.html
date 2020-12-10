@@ -76,7 +76,17 @@
                       <mat-slider #zoombar step="0.2" min="0.7" max="3" (change)="zoomupdate()" [(ngModel)]="zoombarvalue" vertical="true"></mat-slider>
                       <img src="./assets/icon/zoom-out.svg" alt="" width="32" height="32" title="Bootstrap" (click)="zoomout(true)">
                   </div>
+                  <div class="row">
+                    <button class="btn btn-primary btn-block" (click)="showNotification('bottom','left')">
+                      <!-- <img src="./assets/icon/fullscreen.svg" alt="" width="32" height="32" title="Bootstrap"> -->
+
+
+                      </button>
                   </div>
+                  
+
+
+                </div>
 
                   
               </div>

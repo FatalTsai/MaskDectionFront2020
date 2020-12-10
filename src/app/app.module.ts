@@ -15,6 +15,10 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { MonitorComponent } from './monitor/monitor.component';
 import { PopupModule } from '@progress/kendo-angular-popup';
 import {MatSliderModule} from '@angular/material/slider';
+import { PlotComponent } from './plot/plot.component';
+import { AlbumComponent } from './album/album.component';
+import { SlidesComponent } from './slides/slides.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 
 @NgModule({
@@ -33,7 +37,11 @@ import {MatSliderModule} from '@angular/material/slider';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    MonitorComponent
+    MonitorComponent,
+    PlotComponent,
+    AlbumComponent,
+    SlidesComponent,
+    AboutusComponent
 
   ],
   providers: [],
